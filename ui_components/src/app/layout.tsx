@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 // Add parentheses to invoke the function and get the variable
@@ -22,9 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>
-        {children}  {/* Use the children prop here */}
-      </body>
+      <ClerkProvider>
+        <body className={`${poppins.variable} antialiased`}>{children}</body>
+      </ClerkProvider>
+
     </html>
   );
 }
